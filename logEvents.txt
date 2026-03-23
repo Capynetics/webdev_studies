@@ -69,3 +69,26 @@
 2026-03-19 20:11:07	179a7f0b-1961-44e3-89ea-1ce11c79f292	DELETE	/employees	undefined
 2026-03-19 20:11:18	2d0dc5f0-c08c-4ed0-b8e1-a77c95f462f7	DELETE	/employees	undefined
 2026-03-19 20:11:58	e19327d6-b847-4616-84b6-fad96163250b	GET	/employees/1	undefined
+2026-03-19 20:48:39	ac3c1560-0520-4719-a6db-20eff72c2d1d	GET	/	undefined
+2026-03-19 20:48:39	e981bca0-133b-4fc3-871a-a611b50e7324	GET	/css/style.css	undefined
+2026-03-19 20:48:40	4009d95f-588d-46d5-a53b-a7cddcba8807	GET	/favicon.ico	undefined
+2026-03-19 20:48:45	3fcce48d-e5f6-4b45-8cfc-29d556526db0	GET	/employees	undefined
+2026-03-19 20:48:59	a649bc2a-0a03-4ef1-be54-02a94ab5d811	GET	/employees/2	undefined
+2026-03-19 20:49:15	f59ab09a-33bf-43da-9ce7-6f679b2af944	POST	/employees	http://localhost:3500
+2026-03-19 20:49:15	b8a5959c-dbca-4b64-9f14-0fd42829b58a	POST	/employees	http://localhost:3500	Not allowed by CORS
+2026-03-19 20:50:42	6d4b0823-daa5-453f-8f2b-50068d509960	GET	/	undefined
+2026-03-19 20:50:43	50d0903d-6ccd-4bff-b9b2-b5414f78da46	GET	/css/style.css	undefined
+2026-03-19 20:50:56	6d681f94-11b3-4278-8460-eb39bc0ba60c	POST	/employees	http://localhost:3500
+2026-03-19 20:51:20	c0098bea-2664-43d5-aa06-d9d5d1b14dbd	PUT	/employees	http://localhost:3500
+2026-03-19 20:51:33	0a660179-3f8c-40b4-bf62-9c5e31829d68	DELETE	/employees	http://localhost:3500
+2026-03-19 21:00:35	478841b0-645a-4cbb-9a8d-5471803182af	POST	/register	undefined
+2026-03-19 21:04:30	a00a1a0a-1751-4cec-b474-76748a48b719	POST	/register	undefined
+2026-03-19 21:04:53	747d567c-73db-4d76-ad37-455259f5c916	POST	/register/	undefined
+2026-03-19 21:05:01	1e662cfa-96e8-4b78-94ed-1006e1a6b01c	GET	/employees	undefined
+2026-03-19 21:05:46	767118a1-5a36-4f89-a5f4-cbf19e8b6e16	POST	/register	undefined
+2026-03-19 21:06:35	d5e771eb-338d-4890-8df4-0857c46b5ddb	POST	/register	undefined
+2026-03-20 13:07:01	4895e64c-c6aa-4465-ad2e-ada416fede70	POST	/register	undefined
+2026-03-20 13:16:31	58dec3b9-ff71-4ab0-9792-b5d9fbdf1305	POST	/auth	undefined
+2026-03-20 13:16:38	f593bd90-56ad-4ba2-a1e2-4c91eda0203a	POST	/auth	undefined
+2026-03-20 13:16:55	ee9b29fc-13dd-4149-8899-8736c4da0d45	POST	/auth	undefined
+2026-03-20 13:17:13	2945970e-8fda-4587-a8a2-03df9c207053	POST	/register	undefined

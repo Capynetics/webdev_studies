@@ -5,12 +5,186 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Employees CRUD</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-    <h1>Index</h1>
+    <main>
+        <h1>Employees CRUD Practice</h1>
+
+        <section>
+            <h2>Read</h2>
+            <button id="getAllBtn" type="button">Get All Employees</button>
+            <form id="getByIdForm">
+                <label for="getId">Get Employee By ID:</label>
+                <input id="getId" name="id" type="number" min="1" required />
+                <button type="submit">Get One</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Create</h2>
+            <form id="createForm">
+                <label for="createFirstname">First Name:</label>
+                <input id="createFirstname" name="firstname" type="text" required />
+
+                <label for="createLastname">Last Name:</label>
+                <input id="createLastname" name="lastname" type="text" required />
+
+                <button type="submit">Create Employee</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Update</h2>
+            <form id="updateForm">
+                <label for="updateId">Employee ID:</label>
+                <input id="updateId" name="id" type="number" min="1" required />
+
+                <label for="updateFirstname">New First Name:</label>
+                <input id="updateFirstname" name="firstname" type="text" />
+
+                <label for="updateLastname">New Last Name:</label>
+                <input id="updateLastname" name="lastname" type="text" />
+
+                <button type="submit">Update Employee</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Delete</h2>
+            <form id="deleteForm">
+                <label for="deleteId">Employee ID:</label>
+                <input id="deleteId" name="id" type="number" min="1" required />
+                <button type="submit">Delete Employee</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Response</h2>
+            <pre id="output"></pre>
+        </section>
+    </main>
+
+    <script>
+        const output = document.getElementById('output');
+
+        const printResult = async (response) => {
+            let body;
+            try {
+                body = await response.json();
+            } catch {
+                body = { message: 'No JSON response body' };
+            }
+
+            output.textContent = JSON.stringify(
+                {
+                    status: response.status,
+                    ok: response.ok,
+                    data: body
+                },
+                null,
+                2
+            );
+        };
+
+        const printError = (error) => {
+            output.textContent = JSON.stringify(
+                {
+                    status: 'NETWORK_OR_CLIENT_ERROR',
+                    message: error.message
+                },
+                null,
+                2
+            );
+        };
+
+        document.getElementById('getAllBtn').addEventListener('click', async () => {
+            try {
+                const response = await fetch('/employees');
+                await printResult(response);
+            } catch (error) {
+                printError(error);
+            }
+        });
+
+        document.getElementById('getByIdForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const id = document.getElementById('getId').value;
+
+            try {
+                const response = await fetch(`/employees/${id}`);
+                await printResult(response);
+            } catch (error) {
+                printError(error);
+            }
+        });
+
+        document.getElementById('createForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const firstname = document.getElementById('createFirstname').value.trim();
+            const lastname = document.getElementById('createLastname').value.trim();
+
+            try {
+                const response = await fetch('/employees', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ firstname, lastname })
+                });
+                await printResult(response);
+            } catch (error) {
+                printError(error);
+            }
+        });
+
+        document.getElementById('updateForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const id = Number(document.getElementById('updateId').value);
+            const firstname = document.getElementById('updateFirstname').value.trim();
+            const lastname = document.getElementById('updateLastname').value.trim();
+
+            const payload = { id };
+            if (firstname) payload.firstname = firstname;
+            if (lastname) payload.lastname = lastname;
+
+            try {
+                const response = await fetch('/employees', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                await printResult(response);
+            } catch (error) {
+                printError(error);
+            }
+        });
+
+        document.getElementById('deleteForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const id = Number(document.getElementById('deleteId').value);
+
+            try {
+                const response = await fetch('/employees', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id })
+                });
+                await printResult(response);
+            } catch (error) {
+                printError(error);
+            }
+        });
+    </script>
 </body>
 
 </html>
